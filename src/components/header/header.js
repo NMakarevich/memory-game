@@ -13,14 +13,15 @@ class Header {
       title: 'Новая игра',
       type: 'button',
       onClick: () => {},
-      ariaLabel: 'Новая игра',
+      'aria-label': 'Новая игра',
       classList: [],
+      'data-id': 'test',
     });
     const leadersTableButton = new Button({
       title: 'Таблица лидеров',
       type: 'button',
       onClick: () => {},
-      ariaLabel: 'Таблица лидеров',
+      'aria-label': 'Таблица лидеров',
       classList: [],
     });
     const container = createElement('div', {
