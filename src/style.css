@@ -39,6 +39,7 @@ body {
 body {
   display: flex;
   flex-direction: column;
+  background-color: #FEF7FF;
 }
 
 .main {
