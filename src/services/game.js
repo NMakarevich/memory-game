@@ -11,9 +11,14 @@ class Game {
   _shuffledCards = null;
   openedCards = null;
   disableOpen = false;
+  gameContainer = null;
 
   constructor() {
     this.init();
+  }
+
+  set gameContainerRef(gameContainer) {
+    this.gameContainer = gameContainer;
   }
 
   get turnsIndicator() {
@@ -34,6 +39,7 @@ class Game {
   }
 
   resetGame() {
+    console.log(this.gameContainer);
     this.init();
     this.turnsIndicator.textContent = this.turns.toString();
     this.pairsIndicator.textContent = this.pairs.toString();

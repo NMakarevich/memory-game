@@ -1,5 +1,6 @@
 import { createElement } from '../../utils/createElement.js';
 import { Button } from '../button/button.js';
+import game from '../../services/game.js';
 
 class Header {
   header = null;
@@ -12,7 +13,7 @@ class Header {
     const newGameButton = new Button({
       title: 'Новая игра',
       type: 'button',
-      onClick: () => {},
+      onClick: () => game.resetGame(),
       'aria-label': 'Новая игра',
       classList: [],
       'data-id': 'test',
