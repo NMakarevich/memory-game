@@ -6,27 +6,25 @@ class GameField {
   constructor() {
     this.game = game;
     this.cards = this.game.shuffledCards;
-    this.gameContainer = null;
+    this.cardsList = null;
+    this.game.resetGameFieldMethod = this.resetGameField;
   }
 
-  initGameContainer() {
-    this.gameContainer = createElement('ul', {
-      classList: ['cards-list'],
-      children: this.cards.map(({ name, src }, index) =>
-        createElement('li', {
-          classList: ['cards-list_item'],
-          children: [new Card({ src, name, alt: name, id: index }).element],
-        })
-      ),
-    });
-  }
+  renderCards = () => {
+    return this.cards.map(({ name, src }, index) =>
+      createElement('li', {
+        classList: ['cards-list_item'],
+        children: [new Card({ src, name, alt: name, id: index }).element],
+      })
+    );
+  };
 
-  resetGameContainer() {
-    this.gameContainer = null;
-  }
+  resetGameField = () => {
+    this.cards = this.game.shuffledCards;
+    this.cardsList.replaceChildren(...this.renderCards());
+  };
 
   render() {
-    this.initGameContainer();
     const sectionContainer = createElement('section', {
       classList: ['section', 'game'],
       children: [
@@ -50,10 +48,11 @@ class GameField {
             }),
           ],
         }),
-        this.gameContainer,
+        createElement('ul', { classList: ['cards-list'], children: [...this.renderCards()] }),
       ],
     });
     document.querySelector('.main .container').append(sectionContainer);
+    this.cardsList = sectionContainer.querySelector('.cards-list');
   }
 }
 

@@ -8,17 +8,16 @@ class Game {
   turns = 0;
   pairs = 0;
   cards = null;
-  _shuffledCards = null;
   openedCards = null;
   disableOpen = false;
-  gameContainer = null;
+  resetGameField = null;
 
   constructor() {
     this.init();
   }
 
-  set gameContainerRef(gameContainer) {
-    this.gameContainer = gameContainer;
+  set resetGameFieldMethod(resetGameField) {
+    this.resetGameField = resetGameField;
   }
 
   get turnsIndicator() {
@@ -34,15 +33,16 @@ class Game {
     this.pairs = 0;
     this.cards = cards;
     this.openedCards = [];
-    this._shuffledCards = this.shuffleCards();
     this.disableOpen = false;
   }
 
-  resetGame() {
-    console.log(this.gameContainer);
-    this.init();
-    this.turnsIndicator.textContent = this.turns.toString();
-    this.pairsIndicator.textContent = this.pairs.toString();
+  reset() {
+    if (this.resetGameField) {
+      this.init();
+      this.turnsIndicator.textContent = this.turns.toString();
+      this.pairsIndicator.textContent = this.pairs.toString();
+      this.resetGameField();
+    }
   }
 
   shuffleCards() {
@@ -55,7 +55,7 @@ class Game {
   }
 
   get shuffledCards() {
-    return this._shuffledCards;
+    return this.shuffleCards();
   }
 
   openCard(card) {

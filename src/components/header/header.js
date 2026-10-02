@@ -13,7 +13,7 @@ class Header {
     const newGameButton = new Button({
       title: 'Новая игра',
       type: 'button',
-      onClick: () => game.resetGame(),
+      onClick: () => game.reset(),
       'aria-label': 'Новая игра',
       classList: [],
       'data-id': 'test',
