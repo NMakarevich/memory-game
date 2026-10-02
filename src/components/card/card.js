@@ -1,6 +1,8 @@
 import { createElement } from '../../utils/createElement.js';
 import game from '../../services/game.js';
 
+import './card.scss';
+
 class Card {
   card = null;
 

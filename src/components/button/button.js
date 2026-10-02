@@ -1,5 +1,7 @@
 import { createElement } from '../../utils/createElement.js';
 
+import './button.scss';
+
 export class Button {
   title = null;
   type = null;

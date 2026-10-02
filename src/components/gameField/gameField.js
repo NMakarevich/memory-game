@@ -2,6 +2,8 @@ import { createElement } from '../../utils/createElement.js';
 import Card from '../card/card.js';
 import game from '../../services/game.js';
 
+import './gameField.scss';
+
 class GameField {
   constructor() {
     this.game = game;
