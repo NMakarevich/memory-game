@@ -1,4 +1,5 @@
 import { createElement } from '../../utils/createElement.js';
+import game from '../../services/game.js';
 
 class Card {
   card = null;
@@ -8,6 +9,7 @@ class Card {
     this.id = id;
     this.alt = alt;
     this.name = name;
+    this.game = game;
     this.render();
     this.eventListeners();
   }
@@ -28,12 +30,7 @@ class Card {
   }
 
   eventListeners = () => {
-    this.card.addEventListener('click', () => {
-      if (this.card.classList.contains('closed')) {
-        this.card.classList.remove('closed');
-        setTimeout(() => this.card.classList.add('opened'), 400);
-      }
-    });
+    this.card.addEventListener('click', () => this.game.openCard(this.card));
   };
 
   get element() {

@@ -55,13 +55,21 @@
 
 .game {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  gap: 20px;
   padding: 20px;
   max-width: 700px;
   width: 100%;
   background-color: #F3EDF7;
   border-radius: 20px;
+}
+.game-header {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
 .cards-list {
@@ -97,6 +105,8 @@ body {
 
 .main {
   flex: 1;
+  display: flex;
+  justify-content: center;
 }
 
 .container {
