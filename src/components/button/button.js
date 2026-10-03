@@ -20,11 +20,16 @@ export class Button {
   render() {
     this.button = createElement('button', {
       classList: ['button', ...this.classList],
+      eventListeners: [
+        {
+          type: 'click',
+          callback: this.onClick,
+        },
+      ],
       type: this.type,
       ariaLabel: this.ariaLabel,
+      children: [this.title],
     });
-    this.button.textContent = this.title;
-    this.button.addEventListener('click', this.onClick);
   }
 
   get element() {

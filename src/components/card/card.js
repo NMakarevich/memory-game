@@ -11,12 +11,17 @@ class Card {
     this.name = name;
     this.game = game;
     this.render();
-    this.eventListeners();
   }
 
   render() {
     this.card = createElement('div', {
       classList: ['card', 'closed'],
+      eventListeners: [
+        {
+          type: 'click',
+          callback: () => this.game.openCard(this.card),
+        },
+      ],
       'data-id': this.id,
       'data-name': this.name,
       children: [
@@ -28,10 +33,6 @@ class Card {
       ],
     });
   }
-
-  eventListeners = () => {
-    this.card.addEventListener('click', () => this.game.openCard(this.card));
-  };
 
   get element() {
     return this.card;

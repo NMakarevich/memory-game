@@ -1,6 +1,6 @@
 export function createElement(tag, props) {
   const element = document.createElement(tag);
-  const { children = [], classList = [], ...restProps } = props || {};
+  const { children = [], classList = [], eventListeners = [], ...restProps } = props || {};
   if (classList.length > 0) {
     element.classList.add(...classList);
   }
@@ -9,6 +9,11 @@ export function createElement(tag, props) {
   }
   if (children.length > 0) {
     element.append(...children);
+  }
+  if (eventListeners.length > 0) {
+    for (let eventListener of eventListeners) {
+      element.addEventListener(eventListener.type, eventListener.callback);
+    }
   }
   return element;
 }

@@ -9,8 +9,17 @@ class Modal {
   render() {
     this.modal = createElement('div', {
       classList: ['modal'],
+      eventListeners: [
+        {
+          type: 'transitionend',
+          callback: this.handleTransitionEnd,
+        },
+      ],
       children: [
-        createElement('div', { classList: ['modal-overlay'] }),
+        createElement('div', {
+          classList: ['modal-overlay'],
+          eventListeners: [{ type: 'click', callback: this.handleModalEvents }],
+        }),
         createElement('div', {
           classList: ['modal-container'],
         }),
@@ -52,9 +61,7 @@ class Modal {
   };
 
   eventListeners = () => {
-    this.modalOverlay.addEventListener('click', this.handleModalEvents);
     document.addEventListener('keyup', this.handleModalEvents);
-    this.modal.addEventListener('transitionend', this.handleTransitionEnd);
   };
 }
 
