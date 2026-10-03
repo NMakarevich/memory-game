@@ -1,0 +1,43 @@
+@import "./components/layout/layout.scss";
+@import "./components/gameField/gameField.scss";
+@import "./components/modal/modal.scss";
+@import "./components/winMessage/winMessage.scss";
+@import "./components/results/results.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: #FEF7FF;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+
+.container {
+  display: flex;
+  max-width: 1440px;
+  width: 100%;
+  padding: 20px;
+}
+
+.main .container {
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+}
