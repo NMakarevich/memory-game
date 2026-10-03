@@ -14,6 +14,7 @@ class Game {
 
   constructor() {
     this.init();
+    document.addEventListener('transitionend', this.enableOpen);
   }
 
   set resetGameFieldMethod(resetGameField) {
@@ -82,18 +83,22 @@ class Game {
     }, TRANSITION_DELAY);
   }
 
+  enableOpen = () => {
+    if (this.openedCards.length === 0) {
+      this.disableOpen = false;
+    }
+  };
+
   checkPair() {
     const [card1, card2] = this.openedCards;
     if (card1.dataset.name === card2.dataset.name) {
       this.pairs += 1;
       this.pairsIndicator.textContent = this.pairs.toString();
       this.openedCards = [];
-      this.disableOpen = false;
     } else {
       setTimeout(() => {
         this.openedCards.forEach(this.closeCard);
         this.openedCards = [];
-        this.disableOpen = false;
       }, CLOSE_CARDS_DELAY);
     }
   }
