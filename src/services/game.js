@@ -2,6 +2,7 @@ import cards from '../data/cards.json' with { type: 'json' };
 import { getRandomNumber } from '../utils/randomNumber.js';
 import modal from '../components/modal/modal.js';
 import { WinMessage } from '../components/winMessage/winMessage.js';
+import { getLocalStorage, saveToLocalStorage } from '../utils/localStorage.js';
 
 const CLOSE_CARDS_DELAY = 1000;
 const TRANSITION_DELAY = 400;
