@@ -5,6 +5,7 @@ import { WinMessage } from '../components/winMessage/winMessage.js';
 
 const CLOSE_CARDS_DELAY = 1000;
 const TRANSITION_DELAY = 400;
+const MAX_RESULTS_LENGTH = 10;
 
 class Game {
   turns = 0;
@@ -93,9 +94,40 @@ class Game {
     }
   };
 
+  getResultsFromLS() {
+    const results = localStorage.getItem('mg-leaders');
+    if (!results) {
+      return [];
+    } else {
+      return JSON.parse(results);
+    }
+  }
+
+  saveResultToLS() {
+    const results = this.getResultsFromLS();
+    const date = new Date().toLocaleDateString(undefined, {
+      day: 'numeric',
+      month: 'numeric',
+      year: 'numeric',
+    });
+    const result = {
+      turns: this.turns,
+      date,
+    };
+    if (results.length < MAX_RESULTS_LENGTH) {
+      results.push(result);
+    } else {
+      if (results[results.length - 1].turns < this.turns) {
+        results.splice(results.length - 1, 1, result);
+      }
+    }
+    localStorage.setItem('mg-leaders', JSON.stringify(results.sort((a, b) => a.turns - b.turns)));
+  }
+
   checkEndGame = () => {
     if (this.pairs === this.cards.length) {
       this.modal.openModal(new WinMessage(this.turns).element);
+      this.saveResultToLS();
     }
   };
 
