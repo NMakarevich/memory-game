@@ -31,28 +31,29 @@ class Modal {
     }
   };
 
-  closeModal = (event) => {
+  handleModalEvents = (event) => {
     if (
       this.isOpen &&
       ((event.type === 'keyup' && event.key === 'Escape') || event.type === 'click')
     ) {
-      this.modal.classList.remove('open');
-      this.isOpen = false;
+      this.closeModal();
     }
+  };
+
+  closeModal = () => {
+    this.modal.classList.remove('open');
+    this.isOpen = false;
   };
 
   handleTransitionEnd = () => {
     if (!this.isOpen) {
       this.modal.remove();
-      this.modal = null;
-      this.modalContainer = null;
-      this.modalOverlay = null;
     }
   };
 
   eventListeners = () => {
-    this.modalOverlay.addEventListener('click', this.closeModal);
-    document.addEventListener('keyup', this.closeModal);
+    this.modalOverlay.addEventListener('click', this.handleModalEvents);
+    document.addEventListener('keyup', this.handleModalEvents);
     this.modal.addEventListener('transitionend', this.handleTransitionEnd);
   };
 }
