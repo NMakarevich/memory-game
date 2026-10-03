@@ -2,8 +2,6 @@ import { createElement } from '../../utils/createElement.js';
 import { Button } from '../button/button.js';
 import game from '../../services/game.js';
 
-import './header.scss';
-
 class Header {
   header = null;
 
