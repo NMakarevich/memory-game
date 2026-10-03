@@ -1,12 +1,15 @@
 import { createElement } from '../../utils/createElement.js';
 import { Button } from '../button/button.js';
 import game from '../../services/game.js';
+import modal from '../modal/modal.js';
+import { Results } from '../results/results.js';
 
 class Header {
   header = null;
 
   constructor() {
     this.render();
+    this.modal = modal;
   }
 
   render() {
@@ -21,7 +24,7 @@ class Header {
     const leadersTableButton = new Button({
       title: 'Таблица лидеров',
       type: 'button',
-      onClick: () => {},
+      onClick: () => this.modal.openModal(new Results().element),
       'aria-label': 'Таблица лидеров',
       classList: [],
     });

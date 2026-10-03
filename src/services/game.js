@@ -95,17 +95,8 @@ class Game {
     }
   };
 
-  getResultsFromLS() {
-    const results = localStorage.getItem('mg-leaders');
-    if (!results) {
-      return [];
-    } else {
-      return JSON.parse(results);
-    }
-  }
-
   saveResultToLS() {
-    const results = this.getResultsFromLS();
+    const results = getLocalStorage('mg-results');
     const date = new Date().toLocaleDateString(undefined, {
       day: 'numeric',
       month: 'numeric',
@@ -122,7 +113,10 @@ class Game {
         results.splice(results.length - 1, 1, result);
       }
     }
-    localStorage.setItem('mg-leaders', JSON.stringify(results.sort((a, b) => a.turns - b.turns)));
+    saveToLocalStorage(
+      'mg-results',
+      results.sort((a, b) => a.turns - b.turns)
+    );
   }
 
   checkEndGame = () => {
