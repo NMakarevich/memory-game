@@ -37,6 +37,7 @@ class Modal {
       this.modalContainer.appendChild(content);
       this.isOpen = true;
       setTimeout(() => this.modal.classList.add('open'), 0);
+      this.disableScroll();
     }
   };
 
@@ -52,6 +53,7 @@ class Modal {
   closeModal = () => {
     this.modal.classList.remove('open');
     this.isOpen = false;
+    this.enableScroll();
   };
 
   handleTransitionEnd = () => {
@@ -59,6 +61,22 @@ class Modal {
       this.modal.remove();
     }
   };
+
+  handleScroll(event) {
+    event.preventDefault();
+  }
+
+  enableScroll() {
+    document.removeEventListener('wheel', this.handleScroll);
+    document.removeEventListener('scroll', this.handleScroll);
+    document.removeEventListener('touchmove', this.handleScroll);
+  }
+
+  disableScroll() {
+    document.addEventListener('scroll', this.handleScroll, { passive: false });
+    document.addEventListener('wheel', this.handleScroll, { passive: false });
+    document.addEventListener('touchmove', this.handleScroll, { passive: false });
+  }
 
   eventListeners = () => {
     document.addEventListener('keyup', this.handleModalEvents);
