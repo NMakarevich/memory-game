@@ -1,5 +1,7 @@
 import cards from '../data/cards.json' with { type: 'json' };
 import { getRandomNumber } from '../utils/randomNumber.js';
+import modal from '../components/modal/modal.js';
+import { WinMessage } from '../components/winMessage/winMessage.js';
 
 const CLOSE_CARDS_DELAY = 1000;
 const TRANSITION_DELAY = 400;
@@ -11,8 +13,10 @@ class Game {
   openedCards = null;
   disableOpen = false;
   resetGameField = null;
+  modal = null;
 
   constructor() {
+    this.modal = modal;
     this.init();
     document.addEventListener('transitionend', this.enableOpen);
   }
@@ -89,12 +93,19 @@ class Game {
     }
   };
 
+  checkEndGame = () => {
+    if (this.pairs === this.cards.length) {
+      this.modal.openModal(new WinMessage(this.turns).element);
+    }
+  };
+
   checkPair() {
     const [card1, card2] = this.openedCards;
     if (card1.dataset.name === card2.dataset.name) {
       this.pairs += 1;
       this.pairsIndicator.textContent = this.pairs.toString();
       this.openedCards = [];
+      this.checkEndGame();
     } else {
       setTimeout(() => {
         this.openedCards.forEach(this.closeCard);
