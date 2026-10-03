@@ -1,7 +1,5 @@
 import { createElement } from '../../utils/createElement.js';
 
-import './modal.scss';
-
 class Modal {
   modal = null;
   modalContainer = null;
