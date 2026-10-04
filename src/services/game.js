@@ -109,14 +109,11 @@ class Game {
     if (results.length < MAX_RESULTS_LENGTH) {
       results.push(result);
     } else {
-      if (results[results.length - 1].turns < this.turns) {
+      if (results[results.length - 1].turns > this.turns) {
         results.splice(results.length - 1, 1, result);
       }
     }
-    saveToLocalStorage(
-      'mg-results',
-      results.sort((a, b) => a.turns - b.turns)
-    );
+    saveToLocalStorage('mg-results', results);
   }
 
   checkEndGame = () => {

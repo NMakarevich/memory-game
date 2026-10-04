@@ -3,7 +3,9 @@ export function getLocalStorage(key) {
   if (!results) {
     return [];
   } else {
-    return JSON.parse(results);
+    return JSON.parse(results)
+      .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
+      .sort((a, b) => a.turns - b.turns);
   }
 }
 
