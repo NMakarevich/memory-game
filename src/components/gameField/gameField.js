@@ -48,11 +48,16 @@ class GameField {
             }),
           ],
         }),
-        createElement('ul', { classList: ['cards-list'], children: [...this.renderCards()] }),
+        createElement('ul', {
+          classList: ['cards-list'],
+          children: [...this.renderCards()],
+          setRef: (element) => {
+            this.cardsList = element;
+          },
+        }),
       ],
     });
     document.querySelector('.main .container').append(sectionContainer);
-    this.cardsList = sectionContainer.querySelector('.cards-list');
   }
 }
 

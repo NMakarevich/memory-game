@@ -19,14 +19,18 @@ class Modal {
         createElement('div', {
           classList: ['modal-overlay'],
           eventListeners: [{ type: 'click', callback: this.handleModalEvents }],
+          setRef: (element) => {
+            this.modalOverlay = element;
+          },
         }),
         createElement('div', {
           classList: ['modal-container'],
+          setRef: (element) => {
+            this.modalContainer = element;
+          },
         }),
       ],
     });
-    this.modalContainer = this.modal.querySelector('.modal-container');
-    this.modalOverlay = this.modal.querySelector('.modal-overlay');
     document.body.appendChild(this.modal);
     this.eventListeners();
   }
@@ -34,6 +38,7 @@ class Modal {
   openModal = (content) => {
     if (!this.isOpen) {
       this.render();
+      console.log(this.modalContainer);
       this.modalContainer.appendChild(content);
       this.isOpen = true;
       setTimeout(() => this.modal.classList.add('open'), 0);
