@@ -35,14 +35,26 @@ class GameField {
               classList: ['turns'],
               children: [
                 'Ходов: ',
-                createElement('span', { classList: ['turns-count'], children: ['0'] }),
+                createElement('span', {
+                  classList: ['turns-count'],
+                  children: ['0'],
+                  setRef: (element) => {
+                    this.game.turnsIndicatorRef = element;
+                  },
+                }),
               ],
             }),
             createElement('h2', {
               classList: ['pairs'],
               children: [
                 'Найдено пар: ',
-                createElement('span', { classList: ['pairs-count'], children: ['0'] }),
+                createElement('span', {
+                  classList: ['pairs-count'],
+                  children: ['0'],
+                  setRef: (element) => {
+                    this.game.pairsIndicatorRef = element;
+                  },
+                }),
                 ` из ${this.cards.length / 2}`,
               ],
             }),

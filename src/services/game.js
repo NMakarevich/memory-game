@@ -9,9 +9,11 @@ const MAX_RESULTS_LENGTH = 10;
 
 class Game {
   turns = 0;
+  turnsIndicator = null;
   pairs = 0;
+  pairsIndicator = null;
   cards = null;
-  openedCards = null;
+  openedCards = [];
   disableOpen = false;
   resetGameField = null;
   modal = null;
@@ -26,12 +28,12 @@ class Game {
     this.resetGameField = resetGameField;
   }
 
-  get turnsIndicator() {
-    return document.querySelector('.turns-count');
+  set turnsIndicatorRef(element) {
+    this.turnsIndicator = element;
   }
 
-  get pairsIndicator() {
-    return document.querySelector('.pairs-count');
+  set pairsIndicatorRef(element) {
+    this.pairsIndicator = element;
   }
 
   get isDisableOpen() {
