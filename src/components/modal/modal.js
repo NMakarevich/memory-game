@@ -38,7 +38,6 @@ class Modal {
   openModal = (content) => {
     if (!this.isOpen) {
       this.render();
-      console.log(this.modalContainer);
       this.modalContainer.appendChild(content);
       this.isOpen = true;
       setTimeout(() => this.modal.classList.add('open'), 0);
