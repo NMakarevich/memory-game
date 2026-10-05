@@ -5,7 +5,6 @@ import { WinMessage } from '../components/winMessage/winMessage.js';
 import { getLocalStorage, saveToLocalStorage } from '../utils/localStorage.js';
 
 const CLOSE_CARDS_DELAY = 1000;
-const TRANSITION_DELAY = 400;
 const MAX_RESULTS_LENGTH = 10;
 
 class Game {
@@ -33,6 +32,10 @@ class Game {
 
   get pairsIndicator() {
     return document.querySelector('.pairs-count');
+  }
+
+  get isDisableOpen() {
+    return this.disableOpen;
   }
 
   init() {
@@ -66,12 +69,6 @@ class Game {
   }
 
   openCard(card) {
-    if (this.disableOpen || card.classList.contains('opened')) return;
-    card.classList.remove('closed');
-    setTimeout(() => {
-      card.classList.add('opened');
-      card.querySelector('.card-img').style.display = 'block';
-    }, TRANSITION_DELAY);
     this.openedCards.push(card);
     if (this.openedCards.length === 2) {
       this.disableOpen = true;
@@ -79,14 +76,6 @@ class Game {
       this.turnsIndicator.textContent = this.turns.toString();
       this.checkPair();
     }
-  }
-
-  closeCard(card) {
-    card.classList.remove('opened');
-    setTimeout(() => {
-      card.classList.add('closed');
-      card.querySelector('.card-img').style.display = 'none';
-    }, TRANSITION_DELAY);
   }
 
   enableOpen = () => {
@@ -124,7 +113,7 @@ class Game {
   };
 
   checkPair() {
-    const [card1, card2] = this.openedCards;
+    const [card1, card2] = this.openedCards.map((card) => card.card);
     if (card1.dataset.name === card2.dataset.name) {
       this.pairs += 1;
       this.pairsIndicator.textContent = this.pairs.toString();
@@ -132,7 +121,7 @@ class Game {
       this.checkEndGame();
     } else {
       setTimeout(() => {
-        this.openedCards.forEach(this.closeCard);
+        this.openedCards.forEach((card) => card.closeCard());
         this.openedCards = [];
       }, CLOSE_CARDS_DELAY);
     }

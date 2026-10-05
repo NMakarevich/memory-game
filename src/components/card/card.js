@@ -1,6 +1,8 @@
 import { createElement } from '../../utils/createElement.js';
 import game from '../../services/game.js';
 
+const TRANSITION_DELAY = 400;
+
 class Card {
   card = null;
 
@@ -10,6 +12,7 @@ class Card {
     this.alt = alt;
     this.name = name;
     this.game = game;
+    this.cardImg = null;
     this.render();
   }
 
@@ -19,7 +22,7 @@ class Card {
       eventListeners: [
         {
           type: 'click',
-          callback: () => this.game.openCard(this.card),
+          callback: () => this.openCard(this.card),
         },
       ],
       'data-id': this.id,
@@ -29,10 +32,31 @@ class Card {
           classList: ['card-img'],
           src: this.src,
           alt: this.alt,
+          setRef: (element) => {
+            this.cardImg = element;
+          },
         }),
       ],
     });
   }
+
+  openCard() {
+    if (this.game.isDisableOpen || this.card.classList.contains('opened')) return;
+    this.card.classList.remove('closed');
+    setTimeout(() => {
+      this.card.classList.add('opened');
+      this.cardImg.style.display = 'block';
+    }, TRANSITION_DELAY);
+    this.game.openCard(this);
+  }
+
+  closeCard = () => {
+    this.card.classList.remove('opened');
+    setTimeout(() => {
+      this.card.classList.add('closed');
+      this.cardImg.style.display = 'none';
+    }, TRANSITION_DELAY);
+  };
 
   get element() {
     return this.card;
