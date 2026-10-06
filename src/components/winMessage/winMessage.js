@@ -1,9 +1,9 @@
 import { createElement } from '../../utils/createElement.js';
-import { Button } from '../button/button.js';
+import Button from '../button/button.js';
 import modal from '../modal/modal.js';
 import game from '../../services/game.js';
 
-export class WinMessage {
+class WinMessage {
   constructor(turns) {
     this.turns = turns;
     this.modal = modal;
@@ -54,3 +54,5 @@ export class WinMessage {
     });
   }
 }
+
+export default WinMessage;

@@ -1,6 +1,6 @@
 import { createElement } from '../../utils/createElement.js';
 
-export class Button {
+class Button {
   title = null;
   type = null;
   onClick = null;
@@ -36,3 +36,5 @@ export class Button {
     return this.button;
   }
 }
+
+export default Button;

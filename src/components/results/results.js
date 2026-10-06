@@ -1,9 +1,9 @@
 import { getLocalStorage } from '../../utils/localStorage.js';
 import { createElement } from '../../utils/createElement.js';
-import { Button } from '../button/button.js';
+import Button from '../button/button.js';
 import modal from '../modal/modal.js';
 
-export class Results {
+class Results {
   constructor() {
     this.results = getLocalStorage('mg-results');
     this.modal = modal;
@@ -61,3 +61,5 @@ export class Results {
     });
   }
 }
+
+export default Results;

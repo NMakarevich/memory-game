@@ -1,8 +1,8 @@
 import { createElement } from '../../utils/createElement.js';
-import { Button } from '../button/button.js';
+import Button from '../button/button.js';
 import game from '../../services/game.js';
 import modal from '../modal/modal.js';
-import { Results } from '../results/results.js';
+import Results from '../results/results.js';
 
 class Header {
   header = null;
