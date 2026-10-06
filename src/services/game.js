@@ -71,6 +71,7 @@ class Game {
   }
 
   openCard(card) {
+    if (this.openedCards.some((openedCard) => card.id === openedCard.id)) return;
     this.openedCards.push(card);
     if (this.openedCards.length === 2) {
       this.disableOpen = true;
