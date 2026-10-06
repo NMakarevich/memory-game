@@ -1,11 +1,6 @@
 import { createElement } from '../../utils/createElement.js';
 
 class Button {
-  title = null;
-  type = null;
-  onClick = null;
-  ariaLabel = null;
-  classList = [];
   button = null;
 
   constructor({ title, type, onClick, ariaLabel, classList }) {
