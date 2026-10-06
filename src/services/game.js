@@ -116,8 +116,8 @@ class Game {
   };
 
   checkPair() {
-    const [card1, card2] = this.openedCards.map((card) => card.card);
-    if (card1.dataset.name === card2.dataset.name) {
+    const [card1, card2] = this.openedCards;
+    if (card1.name === card2.name) {
       this.pairs += 1;
       this.pairsIndicator.textContent = this.pairs.toString();
       this.openedCards = [];
