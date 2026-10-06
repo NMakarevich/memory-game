@@ -15,7 +15,7 @@ export class Results {
     this.element = createElement('div', {
       classList: ['results'],
       children: [
-        createElement('h3', { classList: ['results-title'], children: 'Результаты' }),
+        createElement('h3', { classList: ['results-title'], children: ['Результаты'] }),
         this.results.length > 0
           ? createElement('ul', {
               classList: ['results-list'],
