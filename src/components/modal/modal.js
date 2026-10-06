@@ -3,7 +3,6 @@ import { createElement } from '../../utils/createElement.js';
 class Modal {
   modal = null;
   modalContainer = null;
-  modalOverlay = null;
   isOpen = false;
 
   render() {
@@ -19,9 +18,6 @@ class Modal {
         createElement('div', {
           classList: ['modal-overlay'],
           eventListeners: [{ type: 'click', callback: this.handleModalEvents }],
-          setRef: (element) => {
-            this.modalOverlay = element;
-          },
         }),
         createElement('div', {
           classList: ['modal-container'],
