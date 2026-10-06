@@ -8,8 +8,8 @@ class Header {
   header = null;
 
   constructor() {
-    this.render();
     this.modal = modal;
+    this.render();
   }
 
   render() {
