@@ -13,6 +13,7 @@ class Card {
     this.name = name;
     this.game = game;
     this.cardImg = null;
+    this.isOpened = false;
     this.render();
   }
 
@@ -41,7 +42,8 @@ class Card {
   }
 
   openCard() {
-    if (this.game.isDisableOpen || this.card.classList.contains('opened')) return;
+    if (this.game.isDisableOpen || this.isOpened) return;
+    this.isOpened = true;
     this.card.classList.remove('closed');
     setTimeout(() => {
       this.card.classList.add('opened');
@@ -55,6 +57,7 @@ class Card {
     setTimeout(() => {
       this.card.classList.add('closed');
       this.cardImg.style.display = 'none';
+      this.isOpened = false;
     }, TRANSITION_DELAY);
   };
 
