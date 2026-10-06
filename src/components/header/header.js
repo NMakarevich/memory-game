@@ -17,15 +17,14 @@ class Header {
       title: 'Новая игра',
       type: 'button',
       onClick: () => game.reset(),
-      'aria-label': 'Новая игра',
+      ariaLabel: 'Новая игра',
       classList: [],
-      'data-id': 'test',
     });
     const leadersTableButton = new Button({
       title: 'Таблица лидеров',
       type: 'button',
       onClick: () => this.modal.openModal(new Results().element),
-      'aria-label': 'Таблица лидеров',
+      ariaLabel: 'Таблица лидеров',
       classList: [],
     });
     const container = createElement('div', {

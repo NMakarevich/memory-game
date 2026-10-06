@@ -27,7 +27,7 @@ export class Button {
         },
       ],
       type: this.type,
-      ariaLabel: this.ariaLabel,
+      'aria-label': this.ariaLabel,
       children: [this.title],
     });
   }
