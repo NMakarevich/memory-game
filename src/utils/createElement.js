@@ -1,6 +1,6 @@
-export function createElement(tag, props) {
+export function createElement(tag, props = {}) {
   const element = document.createElement(tag);
-  const { children = [], classList = [], eventListeners = [], setRef, ...restProps } = props || {};
+  const { children = [], classList = [], eventListeners = [], setRef, ...restProps } = props;
   if (classList.length > 0) {
     element.classList.add(...classList);
   }
