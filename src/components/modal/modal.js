@@ -44,7 +44,7 @@ class Modal {
   handleModalEvents = (event) => {
     if (
       this.isOpen &&
-      ((event.type === 'keyup' && event.key === 'Escape') || event.type === 'click')
+      ((event.type === 'keydown' && event.key === 'Escape') || event.type === 'click')
     ) {
       this.closeModal();
     }
@@ -79,7 +79,7 @@ class Modal {
   }
 
   eventListeners = () => {
-    document.addEventListener('keyup', this.handleModalEvents);
+    document.addEventListener('keydown', this.handleModalEvents);
   };
 }
 
