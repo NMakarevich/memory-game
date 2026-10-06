@@ -5,6 +5,10 @@ class Modal {
   modalContainer = null;
   isOpen = false;
 
+  constructor() {
+    document.addEventListener('keydown', this.handleModalEvents);
+  }
+
   render() {
     this.modal = createElement('div', {
       classList: ['modal'],
@@ -28,7 +32,6 @@ class Modal {
       ],
     });
     document.body.appendChild(this.modal);
-    this.eventListeners();
   }
 
   openModal = (content) => {
@@ -77,10 +80,6 @@ class Modal {
     document.addEventListener('wheel', this.handleScroll, { passive: false });
     document.addEventListener('touchmove', this.handleScroll, { passive: false });
   }
-
-  eventListeners = () => {
-    document.addEventListener('keydown', this.handleModalEvents);
-  };
 }
 
 const modal = new Modal();
