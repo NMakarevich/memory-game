@@ -62,7 +62,7 @@ class GameField {
         }),
         createElement('ul', {
           classList: ['cards-list'],
-          children: [...this.renderCards()],
+          children: this.renderCards(),
           setRef: (element) => {
             this.cardsList = element;
           },
