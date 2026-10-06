@@ -1,7 +1,7 @@
 .header {
   display: flex;
   justify-content: center;
-  background-color: #6750A4;
+  background-color: #6750a4;
 }
 .header .container {
   justify-content: center;
@@ -12,15 +12,15 @@
   display: flex;
   align-items: center;
   padding: 8px;
-  background-color: #EADDFF;
-  border: 1px solid #79747E;
+  background-color: #eaddff;
+  border: 1px solid #79747e;
   border-radius: 8px;
   color: #000;
   cursor: pointer;
   transition: all 0.4s;
 }
 .button:hover {
-  background-color: #4F378B;
+  background-color: #4f378b;
   color: #fff;
 }
 

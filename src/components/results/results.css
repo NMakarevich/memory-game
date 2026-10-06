@@ -4,6 +4,31 @@
   align-items: center;
   gap: 20px;
   width: 100%;
+  padding: 8px;
+}
+.results-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  list-style: none;
+}
+.results-list_item,
+.results-list .item {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  padding: 4px;
+}
+.results-list_item-date,
+.results-list .item-date {
+  text-align: center;
+}
+.results-list_item-turns,
+.results-list .item-turns {
+  text-align: right;
+}
+.results .button {
+  align-self: flex-end;
 }
 
 /*# sourceMappingURL=results.css.map */

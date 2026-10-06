@@ -14,7 +14,7 @@
   }
 
   &.opened {
-    background-color: #6750A4;
+    background-color: #6750a4;
     transform: rotate3d(0, 0, 0, 0);
 
     .card-img {
@@ -23,7 +23,7 @@
   }
 
   &.closed {
-    background-color: #49454F;
+    background-color: #49454f;
     transform: rotate3d(0, 0, 0, 0);
 
     .card-img {

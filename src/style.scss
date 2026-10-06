@@ -1,8 +1,8 @@
-@import "./components/layout/layout.scss";
-@import "./components/gameField/gameField.scss";
-@import "./components/modal/modal.scss";
-@import "./components/winMessage/winMessage.scss";
-@import "./components/results/results.scss";
+@import './components/layout/layout.scss';
+@import './components/gameField/gameField.scss';
+@import './components/modal/modal.scss';
+@import './components/winMessage/winMessage.scss';
+@import './components/results/results.scss';
 
 * {
   margin: 0;
@@ -19,7 +19,7 @@ body {
 body {
   display: flex;
   flex-direction: column;
-  background-color: #FEF7FF;
+  background-color: #fef7ff;
 }
 
 .main {
@@ -27,7 +27,6 @@ body {
   display: flex;
   justify-content: center;
 }
-
 
 .container {
   display: flex;

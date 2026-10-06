@@ -7,10 +7,10 @@
   width: 100%;
 }
 .card.opened {
-  background-color: #6750A4;
+  background-color: #6750a4;
 }
 .card.closed {
-  background-color: #49454F;
+  background-color: #49454f;
 }
 .card.closed-img {
   display: none;
@@ -23,7 +23,7 @@
   padding: 20px;
   max-width: 700px;
   width: 100%;
-  background-color: #F3EDF7;
+  background-color: #f3edf7;
   border-radius: 20px;
 }
 
