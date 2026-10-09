@@ -1,4 +1,4 @@
-import { getLocalStorage } from '../../utils/localStorage.js';
+import { convertDate, getLocalStorage } from '../../utils/localStorage.js';
 import { createElement } from '../../utils/createElement.js';
 import Button from '../button/button.js';
 import modal from '../modal/modal.js';
@@ -35,7 +35,7 @@ class Results {
                       createElement('span', { classList: ['item-index'], children: [index + 1] }),
                       createElement('span', {
                         classList: ['item-date'],
-                        children: [result.date],
+                        children: [convertDate(result.date)],
                       }),
                       createElement('span', {
                         classList: ['item-turns'],

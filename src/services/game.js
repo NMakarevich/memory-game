@@ -2,10 +2,9 @@ import cards from '../data/cards.json' with { type: 'json' };
 import { getRandomNumber } from '../utils/randomNumber.js';
 import modal from '../components/modal/modal.js';
 import WinMessage from '../components/winMessage/winMessage.js';
-import { getLocalStorage, saveToLocalStorage } from '../utils/localStorage.js';
+import { saveToLocalStorage } from '../utils/localStorage.js';
 
 const CLOSE_CARDS_DELAY = 1000;
-const MAX_RESULTS_LENGTH = 10;
 
 class Game {
   turns = 0;
@@ -88,24 +87,12 @@ class Game {
   };
 
   saveResultToLS() {
-    const results = getLocalStorage('mg-results');
-    const date = new Date().toLocaleDateString(undefined, {
-      day: 'numeric',
-      month: 'numeric',
-      year: 'numeric',
-    });
+    const date = new Date().getTime();
     const result = {
       turns: this.turns,
       date,
     };
-    if (results.length < MAX_RESULTS_LENGTH) {
-      results.push(result);
-    } else {
-      if (results[results.length - 1].turns > this.turns) {
-        results.splice(results.length - 1, 1, result);
-      }
-    }
-    saveToLocalStorage('mg-results', results);
+    saveToLocalStorage('mg-results', result);
   }
 
   checkEndGame = () => {
