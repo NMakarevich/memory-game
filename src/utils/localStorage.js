@@ -21,6 +21,14 @@ export function saveToLocalStorage(key, value) {
 }
 
 export function convertDate(date) {
+  if (typeof date === 'string') {
+    const [day, month, year] = date.split('-').map(Number);
+    return new Date(year, month, day).toLocaleDateString('ru-RU', {
+      day: 'numeric',
+      month: 'numeric',
+      year: 'numeric',
+    });
+  }
   return new Date(date).toLocaleDateString('ru-RU', {
     day: 'numeric',
     month: 'numeric',
