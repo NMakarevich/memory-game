@@ -6,7 +6,15 @@ export function getLocalStorage(key) {
     return [];
   } else {
     try {
-      return JSON.parse(results).sort((a, b) => a.turns - b.turns || a.date - b.date);
+      return JSON.parse(results)
+        .map((result) => {
+          if (typeof result.date === 'string') {
+            const [day, month, year] = result.date.split('.').map(Number);
+            return { ...result, date: new Date(year, month - 1, day).getTime() };
+          }
+          return result;
+        })
+        .sort((a, b) => a.turns - b.turns || a.date - b.date);
     } catch {
       return [];
     }
@@ -21,14 +29,6 @@ export function saveToLocalStorage(key, value) {
 }
 
 export function convertDate(date) {
-  if (typeof date === 'string') {
-    const [day, month, year] = date.split('-').map(Number);
-    return new Date(year, month, day).toLocaleDateString('ru-RU', {
-      day: 'numeric',
-      month: 'numeric',
-      year: 'numeric',
-    });
-  }
   return new Date(date).toLocaleDateString('ru-RU', {
     day: 'numeric',
     month: 'numeric',
