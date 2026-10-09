@@ -1,0 +1,11 @@
+.header {
+  display: flex;
+  justify-content: center;
+  background-color: #6750a4;
+}
+.header .container {
+  justify-content: center;
+  gap: 16px;
+}
+
+/*# sourceMappingURL=header.css.map */
