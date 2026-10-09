@@ -36,21 +36,18 @@
   transition: all 0.4s ease-in-out;
 }
 .card-img {
+  display: block;
+}
+.card-img.closed {
   display: none;
 }
 .card.opened {
   background-color: #6750a4;
   transform: rotateY(0);
 }
-.card.opened .card-img {
-  display: block;
-}
 .card.closed {
   background-color: #49454f;
   transform: rotateY(0);
-}
-.card.closed .card-img {
-  display: none;
 }
 
 .game {

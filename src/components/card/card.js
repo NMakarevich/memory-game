@@ -1,8 +1,6 @@
 import { createElement } from '../../utils/createElement.js';
 import game from '../../services/game.js';
 
-const TRANSITION_DELAY = 400;
-
 class Card {
   card = null;
 
@@ -15,6 +13,8 @@ class Card {
     this.cardImg = null;
     this.isOpened = false;
     this.render();
+
+    this.card.addEventListener('transitionend', this.handleTransitionEnd);
   }
 
   render() {
@@ -30,7 +30,7 @@ class Card {
       'data-name': this.name,
       children: [
         createElement('img', {
-          classList: ['card-img'],
+          classList: ['card-img', 'closed'],
           src: this.src,
           alt: this.alt,
           setRef: (element) => {
@@ -41,24 +41,26 @@ class Card {
     });
   }
 
+  handleTransitionEnd = () => {
+    if (this.isOpened) {
+      this.card.classList.add('opened');
+      this.cardImg.classList.remove('closed');
+    } else {
+      this.card.classList.add('closed');
+      this.cardImg.classList.add('closed');
+    }
+  };
+
   openCard() {
     if (this.game.isDisableOpen || this.isOpened) return;
     this.isOpened = true;
     this.card.classList.remove('closed');
-    setTimeout(() => {
-      this.card.classList.add('opened');
-      this.cardImg.style.display = 'block';
-    }, TRANSITION_DELAY);
     this.game.openCard(this);
   }
 
   closeCard = () => {
+    this.isOpened = false;
     this.card.classList.remove('opened');
-    setTimeout(() => {
-      this.card.classList.add('closed');
-      this.cardImg.style.display = 'none';
-      this.isOpened = false;
-    }, TRANSITION_DELAY);
   };
 
   get element() {
